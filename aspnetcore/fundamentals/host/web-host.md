@@ -318,6 +318,27 @@ WebHost.CreateDefaultBuilder(args)
 
 ::: moniker-end
 
+::: moniker range=">= aspnetcore-2.1"
+
+### Hosting Startup Exclude Assemblies
+
+DESCRIPTION
+
+**Key**: hostingStartupExcludeAssemblies  
+**Type**: *string*  
+**Default**: Empty string  
+**Set using**: `UseSetting`  
+**Environment variable**: `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
+
+A semicolon-delimited string of hosting startup assemblies to exclude on startup.
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting(WebHostDefaults.HostingStartupExcludeAssembliesKey, "assembly1;assembly2")
+```
+
+::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.0"
 
 ### Prefer Hosting URLs
