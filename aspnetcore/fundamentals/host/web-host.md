@@ -299,15 +299,13 @@ var host = new WebHostBuilder()
 
 ### Hosting Startup Assemblies
 
-Sets the app's hosting startup assemblies.
+A semicolon-delimited string of hosting startup assemblies to load on startup.
 
 **Key**: hostingStartupAssemblies  
 **Type**: *string*  
 **Default**: Empty string  
 **Set using**: `UseSetting`  
 **Environment variable**: `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`
-
-A semicolon-delimited string of hosting startup assemblies to load on startup.
 
 Although the configuration value defaults to an empty string, the hosting startup assemblies always include the app's assembly. When hosting startup assemblies are provided, they're added to the app's assembly for loading when the app builds its common services during startup.
 
@@ -322,7 +320,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ### Hosting Startup Exclude Assemblies
 
-DESCRIPTION
+A semicolon-delimited string of hosting startup assemblies to exclude on startup.
 
 **Key**: hostingStartupExcludeAssemblies  
 **Type**: *string*  
@@ -330,11 +328,28 @@ DESCRIPTION
 **Set using**: `UseSetting`  
 **Environment variable**: `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
 
-A semicolon-delimited string of hosting startup assemblies to exclude on startup.
-
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseSetting(WebHostDefaults.HostingStartupExcludeAssembliesKey, "assembly1;assembly2")
+```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+### HTTPS Port
+
+Set the HTTPS redirect port. Used in [enforcing HTTPS](xref:security/enforcing-ssl).
+
+**Key**: https_port
+**Type**: *string*
+**Default**: A default value isn't set.
+**Set using**: `UseSetting`
+**Environment variable**: `ASPNETCORE_HTTPS_PORT`
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .UseSetting("https_port", "8080")
 ```
 
 ::: moniker-end
