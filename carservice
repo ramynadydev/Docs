@@ -1,0 +1,896 @@
+USE [Ekad_CarService_db]
+GO
+/****** Object:  Table [dbo].[tbl_advertisement]    Script Date: 3/17/2024 12:56:02 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_advertisement](
+	[advertisement_id] [int] IDENTITY(1,1) NOT NULL,
+	[advertisement_type] [int] NOT NULL,
+	[title_ar] [nvarchar](150) NOT NULL,
+	[title_en] [nvarchar](150) NOT NULL,
+	[link] [nvarchar](max) NULL,
+	[web_pic] [nvarchar](max) NULL,
+	[mobile_pic] [nvarchar](max) NULL,
+	[provider_fk] [int] NULL,
+	[from_date] [datetime2](7) NOT NULL,
+	[to_date] [datetime2](7) NOT NULL,
+	[notes_ar] [nvarchar](max) NULL,
+	[notes_en] [nvarchar](max) NULL,
+	[AdCost] [decimal](18, 2) NOT NULL,
+	[priority] [int] NOT NULL,
+	[PreviewCounter] [int] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[Is_active] [bit] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[AdStatus] [int] NOT NULL,
+	[ChangeStatusDate] [datetime2](7) NULL,
+	[RejectedReason] [nvarchar](max) NULL,
+ CONSTRAINT [PK_tbl_advertisement] PRIMARY KEY CLUSTERED 
+(
+	[advertisement_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_advertisement_year_day]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_advertisement_year_day](
+	[advertisementyear_day_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[AdvertisementType] [int] NOT NULL,
+	[YearDayFk] [int] NOT NULL,
+	[Price] [decimal](18, 2) NOT NULL,
+ CONSTRAINT [PK_tbl_advertisement_year_day] PRIMARY KEY CLUSTERED 
+(
+	[advertisementyear_day_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_car]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_car](
+	[car_id] [int] IDENTITY(1,1) NOT NULL,
+	[car_no] [nvarchar](50) NOT NULL,
+	[car_name] [nvarchar](150) NULL,
+	[car_model] [nvarchar](150) NULL,
+	[car_image] [nvarchar](500) NULL,
+	[provider_fk] [int] NOT NULL,
+	[branch_fk] [int] NOT NULL,
+	[Is_active] [bit] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+ CONSTRAINT [PK_tbl_car] PRIMARY KEY CLUSTERED 
+(
+	[car_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_car_service]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_car_service](
+	[car_service_id] [int] IDENTITY(1,1) NOT NULL,
+	[car_fk] [int] NOT NULL,
+	[service_fk] [int] NOT NULL,
+ CONSTRAINT [PK_tbl_car_service] PRIMARY KEY CLUSTERED 
+(
+	[car_service_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_customer]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_customer](
+	[customer_id] [int] IDENTITY(1,1) NOT NULL,
+	[customer_name_ar] [nvarchar](150) NOT NULL,
+	[customer_name_en] [nvarchar](150) NOT NULL,
+	[nationality_fk] [int] NOT NULL,
+	[customer_phone] [nvarchar](50) NULL,
+	[customer_email] [nvarchar](50) NOT NULL,
+	[customer_mobile] [nvarchar](50) NOT NULL,
+	[customer_profile_image] [nvarchar](max) NULL,
+	[customer_nationalID] [nvarchar](max) NOT NULL,
+	[Login_userid] [nvarchar](450) NULL,
+	[Is_active] [bit] NOT NULL,
+	[Activation_code] [nvarchar](150) NULL,
+	[ActivationCodeEnd] [datetime2](7) NULL,
+	[LocationAddress] [nvarchar](2000) NULL,
+	[LocationLang] [nvarchar](50) NULL,
+	[LocationLat] [nvarchar](50) NULL,
+	[TempPassword] [nvarchar](2000) NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[car_type_fk] [int] NULL,
+ CONSTRAINT [PK_tbl_customer] PRIMARY KEY CLUSTERED 
+(
+	[customer_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_customer_favourite_provider]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_customer_favourite_provider](
+	[customer_favourite_provider_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[customer_fk] [int] NOT NULL,
+	[provider_fk] [int] NOT NULL,
+ CONSTRAINT [PK_tbl_customer_favourite_provider] PRIMARY KEY CLUSTERED 
+(
+	[customer_favourite_provider_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_customer_point]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_customer_point](
+	[customer_point_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[point_fk] [int] NOT NULL,
+	[point_value] [int] NOT NULL,
+	[factor] [int] NOT NULL,
+	[point_type] [int] NOT NULL,
+	[customer_fk] [int] NOT NULL,
+	[Is_active] [bit] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[PointReasonAr] [nvarchar](max) NULL,
+	[PointReasonEn] [nvarchar](max) NULL,
+ CONSTRAINT [PK_tbl_customer_point] PRIMARY KEY CLUSTERED 
+(
+	[customer_point_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_inquery]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_inquery](
+	[inquery_id] [int] IDENTITY(1,1) NOT NULL,
+	[inquery_type] [int] NOT NULL,
+	[sender_type] [int] NOT NULL,
+	[sender_name] [nvarchar](150) NOT NULL,
+	[sender_email] [nvarchar](150) NULL,
+	[sender_mobile] [nvarchar](50) NULL,
+	[notes] [nvarchar](max) NULL,
+	[CreateDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_tbl_inquery] PRIMARY KEY CLUSTERED 
+(
+	[inquery_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_inquery_image]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_inquery_image](
+	[inquery_image_id] [int] IDENTITY(1,1) NOT NULL,
+	[inquery_fk] [int] NOT NULL,
+	[inquery_image] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_tbl_inquery_image] PRIMARY KEY CLUSTERED 
+(
+	[inquery_image_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_login_history]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_login_history](
+	[Login_history_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[login_user_id] [nvarchar](450) NOT NULL,
+	[Logged_status] [int] NOT NULL,
+	[FirstLoginDate] [datetime] NULL,
+	[LoginDate] [datetime] NULL,
+	[LogoutDate] [datetime] NULL,
+	[Decvice_id] [nvarchar](max) NOT NULL,
+	[Device_type] [int] NOT NULL,
+	[User_type] [int] NOT NULL,
+	[Device_token] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_tbl_login_history] PRIMARY KEY CLUSTERED 
+(
+	[Login_history_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_offer]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_offer](
+	[offer_id] [int] IDENTITY(1,1) NOT NULL,
+	[provider_fk] [int] NOT NULL,
+	[offer_name_ar] [nvarchar](150) NOT NULL,
+	[offer_name_en] [nvarchar](150) NOT NULL,
+	[offer_discription_ar] [nvarchar](2500) NULL,
+	[offer_discription_en] [nvarchar](2500) NULL,
+	[offer_image] [nvarchar](150) NULL,
+	[FromDate] [datetime2](7) NOT NULL,
+	[ToDate] [datetime2](7) NOT NULL,
+	[DiscountType] [int] NOT NULL,
+	[DiscountValue] [decimal](18, 2) NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[Is_active] [bit] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ApproveOrRejectBy] [nvarchar](max) NULL,
+	[ApproveOrRejectDate] [datetime2](7) NULL,
+	[RejectedReason] [nvarchar](max) NULL,
+ CONSTRAINT [PK_tbl_offer] PRIMARY KEY CLUSTERED 
+(
+	[offer_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_offer_service]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_offer_service](
+	[offer_service_id] [int] IDENTITY(1,1) NOT NULL,
+	[offer_fk] [int] NOT NULL,
+	[service_fk] [int] NOT NULL,
+ CONSTRAINT [PK_tbl_offer_service] PRIMARY KEY CLUSTERED 
+(
+	[offer_service_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_order]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_order](
+	[order_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[order_no] [nvarchar](150) NOT NULL,
+	[order_status] [int] NOT NULL,
+	[provider_fk] [int] NOT NULL,
+	[provider_employee_fk] [int] NULL,
+	[customer_fk] [int] NOT NULL,
+	[branch_fk] [int] NOT NULL,
+	[car_fk] [int] NOT NULL,
+	[service_fk] [int] NULL,
+	[order_date] [datetime] NOT NULL,
+	[notes] [nvarchar](max) NULL,
+	[cancelation_reason] [nvarchar](max) NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[DaySlotFk] [int] NOT NULL,
+	[DiscountType] [int] NOT NULL,
+	[DiscountValue] [decimal](18, 2) NOT NULL,
+	[OfferFk] [int] NULL,
+	[OrderPrice] [decimal](18, 2) NOT NULL,
+ CONSTRAINT [PK_tbl_order] PRIMARY KEY CLUSTERED 
+(
+	[order_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_order_payment]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_order_payment](
+	[order_payment_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[order_fk] [bigint] NOT NULL,
+	[payment_amount] [decimal](18, 2) NOT NULL,
+	[points_amount] [int] NULL,
+	[payment_type] [int] NOT NULL,
+	[RefNumber] [nvarchar](max) NULL,
+	[TransactionNumber] [nvarchar](max) NULL,
+ CONSTRAINT [PK_tbl_order_payment] PRIMARY KEY CLUSTERED 
+(
+	[order_payment_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_order_review]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_order_review](
+	[order_review_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[order_fk] [bigint] NOT NULL,
+	[ReviewRate] [int] NOT NULL,
+	[ReviewText] [nvarchar](max) NULL,
+	[provider_fk] [int] NOT NULL,
+	[customer_fk] [int] NOT NULL,
+	[ReviewType] [int] NOT NULL,
+ CONSTRAINT [PK_tbl_order_review] PRIMARY KEY CLUSTERED 
+(
+	[order_review_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_order_status]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_order_status](
+	[order_status_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[order_fk] [bigint] NOT NULL,
+	[status] [int] NOT NULL,
+	[status_details_ar] [nvarchar](max) NULL,
+	[status_details_en] [nvarchar](max) NULL,
+	[changeStatusDate] [datetime2](7) NOT NULL,
+ CONSTRAINT [PK_tbl_order_tracking] PRIMARY KEY CLUSTERED 
+(
+	[order_status_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_point_setting]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_point_setting](
+	[point_setting_id] [int] IDENTITY(1,1) NOT NULL,
+	[point_name_ar] [nvarchar](50) NOT NULL,
+	[point_name_en] [nvarchar](50) NOT NULL,
+	[point_rate] [int] NOT NULL,
+	[Is_active] [bit] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[End_date] [datetime] NULL,
+ CONSTRAINT [PK_tbl_point_setting] PRIMARY KEY CLUSTERED 
+(
+	[point_setting_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_policy]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_policy](
+	[policy_id] [int] IDENTITY(1,1) NOT NULL,
+	[policy_name_ar] [nvarchar](150) NOT NULL,
+	[policy_name_en] [nvarchar](150) NOT NULL,
+	[allow_refund] [bit] NOT NULL,
+	[allow_part_refund] [bit] NOT NULL,
+	[part_refund_percent] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_tbl_policy] PRIMARY KEY CLUSTERED 
+(
+	[policy_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_provider]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_provider](
+	[provider_id] [int] IDENTITY(1,1) NOT NULL,
+	[provider_name_ar] [nvarchar](150) NOT NULL,
+	[provider_name_en] [nvarchar](150) NOT NULL,
+	[provider_notes_ar] [nvarchar](max) NULL,
+	[provider_notes_en] [nvarchar](max) NULL,
+	[provider_phone] [nvarchar](50) NULL,
+	[provider_email] [nvarchar](50) NULL,
+	[provider_mobile] [nvarchar](50) NULL,
+	[ProviderImage] [nvarchar](max) NOT NULL,
+	[Is_active] [bit] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[CreatedBy] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_tbl_provider] PRIMARY KEY CLUSTERED 
+(
+	[provider_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_provider_branch]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_provider_branch](
+	[branch_id] [int] IDENTITY(1,1) NOT NULL,
+	[provider_fk] [int] NOT NULL,
+	[branch_name_ar] [nvarchar](150) NOT NULL,
+	[branch_name_en] [nvarchar](150) NOT NULL,
+	[branch_notes_ar] [nvarchar](max) NULL,
+	[branch_notes_en] [nvarchar](max) NULL,
+	[branch_address_ar] [nvarchar](1500) NULL,
+	[branch_address_en] [nvarchar](1500) NULL,
+	[country_fk] [int] NULL,
+	[city_fk] [int] NULL,
+	[branch_lat] [nvarchar](150) NULL,
+	[branch_lang] [nvarchar](150) NULL,
+	[branch_phone] [nvarchar](50) NULL,
+	[branch_mobile] [nvarchar](50) NULL,
+	[start_at] [time](7) NOT NULL,
+	[end_at] [time](7) NOT NULL,
+	[Is_active] [bit] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[CreatedBy] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_tbl_provider_branch] PRIMARY KEY CLUSTERED 
+(
+	[branch_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_provider_branch_slot]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_provider_branch_slot](
+	[provider_branch_slot_id] [int] IDENTITY(1,1) NOT NULL,
+	[BranchFk] [int] NOT NULL,
+	[DaySlotFk] [int] NOT NULL,
+	[IsChecked] [bit] NOT NULL,
+	[WeekDayFk] [int] NOT NULL,
+ CONSTRAINT [PK_tbl_provider_branch_slot] PRIMARY KEY CLUSTERED 
+(
+	[provider_branch_slot_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_provider_employee]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_provider_employee](
+	[employee_id] [int] IDENTITY(1,1) NOT NULL,
+	[provider_fk] [int] NOT NULL,
+	[role_type] [int] NOT NULL,
+	[employee_name_ar] [nvarchar](150) NOT NULL,
+	[employee_name_en] [nvarchar](150) NOT NULL,
+	[employee_email] [nvarchar](50) NOT NULL,
+	[employee_mobile] [nvarchar](50) NOT NULL,
+	[Login_userid] [nvarchar](450) NULL,
+	[Is_active] [bit] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[CreatedBy] [nvarchar](450) NOT NULL,
+	[CarFk] [int] NULL,
+	[ChangePasswordCodeEnd] [datetime2](7) NULL,
+	[Change_password_code] [nvarchar](150) NULL,
+ CONSTRAINT [PK_tbl_provider_employee] PRIMARY KEY CLUSTERED 
+(
+	[employee_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_provider_service]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_provider_service](
+	[provider_service_id] [int] IDENTITY(1,1) NOT NULL,
+	[service_fk] [int] NOT NULL,
+	[provider_fk] [int] NOT NULL,
+	[policy_fk] [int] NOT NULL,
+	[price] [decimal](18, 2) NOT NULL,
+ CONSTRAINT [PK_tbl_service_provider] PRIMARY KEY CLUSTERED 
+(
+	[provider_service_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_provider_wallet]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_provider_wallet](
+	[provider_wallet_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[provider_fk] [int] NOT NULL,
+	[order_fk] [bigint] NULL,
+	[transaction_type] [int] NOT NULL,
+	[transaction_amount] [decimal](18, 2) NOT NULL,
+	[transaction_factor] [int] NOT NULL,
+	[transaction_notes_ar] [nvarchar](max) NULL,
+	[transaction_notes_en] [nvarchar](max) NULL,
+	[transaction_date] [datetime] NOT NULL,
+	[Is_active] [bit] NOT NULL,
+	[PaymentType] [int] NULL,
+	[WaletTransactionNo] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_tbl_provider_wallet] PRIMARY KEY CLUSTERED 
+(
+	[provider_wallet_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_service]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_service](
+	[service_id] [int] IDENTITY(1,1) NOT NULL,
+	[service_type_fk] [int] NOT NULL,
+	[service_name_ar] [nvarchar](150) NOT NULL,
+	[service_name_en] [nvarchar](150) NOT NULL,
+	[service_discription_ar] [nvarchar](2500) NOT NULL,
+	[service_discription_en] [nvarchar](2500) NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[Is_active] [bit] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ServiceImage] [nvarchar](max) NULL,
+ CONSTRAINT [PK_tbl_service] PRIMARY KEY CLUSTERED 
+(
+	[service_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_service_type]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_service_type](
+	[service_type_id] [int] IDENTITY(1,1) NOT NULL,
+	[service_type_name_ar] [nvarchar](150) NOT NULL,
+	[service_type_name_en] [nvarchar](150) NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ServiceTypeImage] [nvarchar](max) NULL,
+ CONSTRAINT [PK_tbl_service_type] PRIMARY KEY CLUSTERED 
+(
+	[service_type_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_user_notification]    Script Date: 3/17/2024 12:56:03 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_user_notification](
+	[user_notification_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[login_user_id] [nvarchar](450) NOT NULL,
+	[CustomerFk] [int] NULL,
+	[ProviderFk] [int] NULL,
+	[FromUserImageURL] [nvarchar](1000) NOT NULL,
+	[FromUserName] [nvarchar](500) NOT NULL,
+	[NotificationTitle] [nvarchar](1000) NOT NULL,
+	[NotificationTitleEn] [nvarchar](1000) NOT NULL,
+	[NotificationDetailsMessage] [nvarchar](max) NOT NULL,
+	[NotificationDetailsMessageEn] [nvarchar](max) NOT NULL,
+	[NotificationContent] [nvarchar](max) NOT NULL,
+	[NotificationDate] [datetime] NULL,
+	[NotificationType] [int] NOT NULL,
+	[UserTypeId] [int] NOT NULL,
+	[IsRead] [bit] NOT NULL,
+ CONSTRAINT [PK_tbl_user_notification] PRIMARY KEY CLUSTERED 
+(
+	[user_notification_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[tbl_advertisement] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_advertisement] ADD  DEFAULT ((0)) FOR [AdStatus]
+GO
+ALTER TABLE [dbo].[tbl_car] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_customer] ADD  DEFAULT (N'') FOR [customer_email]
+GO
+ALTER TABLE [dbo].[tbl_customer] ADD  DEFAULT (N'') FOR [customer_mobile]
+GO
+ALTER TABLE [dbo].[tbl_customer] ADD  DEFAULT (N'') FOR [customer_nationalID]
+GO
+ALTER TABLE [dbo].[tbl_customer] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_customer_point] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_inquery] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_offer] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_order] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_order] ADD  DEFAULT ((0)) FOR [DaySlotFk]
+GO
+ALTER TABLE [dbo].[tbl_order] ADD  DEFAULT ((0)) FOR [DiscountType]
+GO
+ALTER TABLE [dbo].[tbl_order] ADD  DEFAULT ((0.0)) FOR [DiscountValue]
+GO
+ALTER TABLE [dbo].[tbl_order] ADD  DEFAULT ((0.0)) FOR [OrderPrice]
+GO
+ALTER TABLE [dbo].[tbl_order_review] ADD  DEFAULT ((0)) FOR [ReviewType]
+GO
+ALTER TABLE [dbo].[tbl_order_status] ADD  DEFAULT ('0001-01-01T00:00:00.0000000') FOR [changeStatusDate]
+GO
+ALTER TABLE [dbo].[tbl_point_setting] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_provider] ADD  DEFAULT (N'') FOR [ProviderImage]
+GO
+ALTER TABLE [dbo].[tbl_provider] ADD  DEFAULT ((1)) FOR [Is_active]
+GO
+ALTER TABLE [dbo].[tbl_provider] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_provider_branch] ADD  DEFAULT ((1)) FOR [Is_active]
+GO
+ALTER TABLE [dbo].[tbl_provider_branch] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_provider_branch_slot] ADD  DEFAULT ((0)) FOR [WeekDayFk]
+GO
+ALTER TABLE [dbo].[tbl_provider_employee] ADD  DEFAULT (N'') FOR [employee_mobile]
+GO
+ALTER TABLE [dbo].[tbl_provider_employee] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_provider_wallet] ADD  DEFAULT (N'') FOR [WaletTransactionNo]
+GO
+ALTER TABLE [dbo].[tbl_service] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_service] ADD  DEFAULT ((1)) FOR [Is_active]
+GO
+ALTER TABLE [dbo].[tbl_service_type] ADD  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[tbl_advertisement]  WITH CHECK ADD  CONSTRAINT [FK_tbl_advertisement_tbl_provider] FOREIGN KEY([provider_fk])
+REFERENCES [dbo].[tbl_provider] ([provider_id])
+GO
+ALTER TABLE [dbo].[tbl_advertisement] CHECK CONSTRAINT [FK_tbl_advertisement_tbl_provider]
+GO
+ALTER TABLE [dbo].[tbl_advertisement]  WITH CHECK ADD  CONSTRAINT [FK_tbl_advertisement_tbl_setting] FOREIGN KEY([advertisement_type])
+REFERENCES [dbo].[tbl_setting] ([setting_id])
+GO
+ALTER TABLE [dbo].[tbl_advertisement] CHECK CONSTRAINT [FK_tbl_advertisement_tbl_setting]
+GO
+ALTER TABLE [dbo].[tbl_advertisement_year_day]  WITH CHECK ADD  CONSTRAINT [FK_tbl_advertisement_year_day_tbl_setting] FOREIGN KEY([AdvertisementType])
+REFERENCES [dbo].[tbl_setting] ([setting_id])
+GO
+ALTER TABLE [dbo].[tbl_advertisement_year_day] CHECK CONSTRAINT [FK_tbl_advertisement_year_day_tbl_setting]
+GO
+ALTER TABLE [dbo].[tbl_advertisement_year_day]  WITH CHECK ADD  CONSTRAINT [FK_tbl_advertisement_year_day_tbl_year_day] FOREIGN KEY([YearDayFk])
+REFERENCES [dbo].[tbl_year_day] ([year_day_id])
+GO
+ALTER TABLE [dbo].[tbl_advertisement_year_day] CHECK CONSTRAINT [FK_tbl_advertisement_year_day_tbl_year_day]
+GO
+ALTER TABLE [dbo].[tbl_car]  WITH CHECK ADD  CONSTRAINT [FK_tbl_car_tbl_provider] FOREIGN KEY([provider_fk])
+REFERENCES [dbo].[tbl_provider] ([provider_id])
+GO
+ALTER TABLE [dbo].[tbl_car] CHECK CONSTRAINT [FK_tbl_car_tbl_provider]
+GO
+ALTER TABLE [dbo].[tbl_car]  WITH CHECK ADD  CONSTRAINT [FK_tbl_car_tbl_provider_branch] FOREIGN KEY([branch_fk])
+REFERENCES [dbo].[tbl_provider_branch] ([branch_id])
+GO
+ALTER TABLE [dbo].[tbl_car] CHECK CONSTRAINT [FK_tbl_car_tbl_provider_branch]
+GO
+ALTER TABLE [dbo].[tbl_car_service]  WITH CHECK ADD  CONSTRAINT [FK_tbl_car_service_tbl_car] FOREIGN KEY([car_fk])
+REFERENCES [dbo].[tbl_car] ([car_id])
+GO
+ALTER TABLE [dbo].[tbl_car_service] CHECK CONSTRAINT [FK_tbl_car_service_tbl_car]
+GO
+ALTER TABLE [dbo].[tbl_car_service]  WITH CHECK ADD  CONSTRAINT [FK_tbl_car_service_tbl_service] FOREIGN KEY([service_fk])
+REFERENCES [dbo].[tbl_service] ([service_id])
+GO
+ALTER TABLE [dbo].[tbl_car_service] CHECK CONSTRAINT [FK_tbl_car_service_tbl_service]
+GO
+ALTER TABLE [dbo].[tbl_customer]  WITH CHECK ADD  CONSTRAINT [FK_tbl_customer_tbl_setting] FOREIGN KEY([nationality_fk])
+REFERENCES [dbo].[tbl_setting] ([setting_id])
+GO
+ALTER TABLE [dbo].[tbl_customer] CHECK CONSTRAINT [FK_tbl_customer_tbl_setting]
+GO
+ALTER TABLE [dbo].[tbl_customer]  WITH CHECK ADD  CONSTRAINT [FK_tbl_customer_tbl_setting_car_type] FOREIGN KEY([car_type_fk])
+REFERENCES [dbo].[tbl_setting] ([setting_id])
+GO
+ALTER TABLE [dbo].[tbl_customer] CHECK CONSTRAINT [FK_tbl_customer_tbl_setting_car_type]
+GO
+ALTER TABLE [dbo].[tbl_customer_favourite_provider]  WITH CHECK ADD  CONSTRAINT [FK_tbl_customer_favourite_provider_tbl_customer] FOREIGN KEY([customer_fk])
+REFERENCES [dbo].[tbl_customer] ([customer_id])
+GO
+ALTER TABLE [dbo].[tbl_customer_favourite_provider] CHECK CONSTRAINT [FK_tbl_customer_favourite_provider_tbl_customer]
+GO
+ALTER TABLE [dbo].[tbl_customer_favourite_provider]  WITH CHECK ADD  CONSTRAINT [FK_tbl_customer_favourite_provider_tbl_provider] FOREIGN KEY([provider_fk])
+REFERENCES [dbo].[tbl_provider] ([provider_id])
+GO
+ALTER TABLE [dbo].[tbl_customer_favourite_provider] CHECK CONSTRAINT [FK_tbl_customer_favourite_provider_tbl_provider]
+GO
+ALTER TABLE [dbo].[tbl_customer_point]  WITH CHECK ADD  CONSTRAINT [FK_tbl_customer_point_tbl_customer] FOREIGN KEY([customer_fk])
+REFERENCES [dbo].[tbl_customer] ([customer_id])
+GO
+ALTER TABLE [dbo].[tbl_customer_point] CHECK CONSTRAINT [FK_tbl_customer_point_tbl_customer]
+GO
+ALTER TABLE [dbo].[tbl_customer_point]  WITH CHECK ADD  CONSTRAINT [FK_tbl_customer_point_tbl_point_setting] FOREIGN KEY([point_fk])
+REFERENCES [dbo].[tbl_point_setting] ([point_setting_id])
+GO
+ALTER TABLE [dbo].[tbl_customer_point] CHECK CONSTRAINT [FK_tbl_customer_point_tbl_point_setting]
+GO
+ALTER TABLE [dbo].[tbl_customer_point]  WITH CHECK ADD  CONSTRAINT [FK_tbl_customer_point_tbl_setting] FOREIGN KEY([point_type])
+REFERENCES [dbo].[tbl_setting] ([setting_id])
+GO
+ALTER TABLE [dbo].[tbl_customer_point] CHECK CONSTRAINT [FK_tbl_customer_point_tbl_setting]
+GO
+ALTER TABLE [dbo].[tbl_inquery]  WITH CHECK ADD  CONSTRAINT [FK_tbl_inquery_tbl_setting] FOREIGN KEY([inquery_type])
+REFERENCES [dbo].[tbl_setting] ([setting_id])
+GO
+ALTER TABLE [dbo].[tbl_inquery] CHECK CONSTRAINT [FK_tbl_inquery_tbl_setting]
+GO
+ALTER TABLE [dbo].[tbl_inquery]  WITH CHECK ADD  CONSTRAINT [FK_tbl_inquery_tbl_setting_SenderType] FOREIGN KEY([sender_type])
+REFERENCES [dbo].[tbl_setting] ([setting_id])
+GO
+ALTER TABLE [dbo].[tbl_inquery] CHECK CONSTRAINT [FK_tbl_inquery_tbl_setting_SenderType]
+GO
+ALTER TABLE [dbo].[tbl_inquery_image]  WITH CHECK ADD  CONSTRAINT [FK_tbl_inquery_image_tbl_inquery] FOREIGN KEY([inquery_fk])
+REFERENCES [dbo].[tbl_inquery] ([inquery_id])
+GO
+ALTER TABLE [dbo].[tbl_inquery_image] CHECK CONSTRAINT [FK_tbl_inquery_image_tbl_inquery]
+GO
+ALTER TABLE [dbo].[tbl_offer]  WITH CHECK ADD  CONSTRAINT [FK_tbl_offer_tbl_provider] FOREIGN KEY([provider_fk])
+REFERENCES [dbo].[tbl_provider] ([provider_id])
+GO
+ALTER TABLE [dbo].[tbl_offer] CHECK CONSTRAINT [FK_tbl_offer_tbl_provider]
+GO
+ALTER TABLE [dbo].[tbl_offer_service]  WITH CHECK ADD  CONSTRAINT [FK_offer_service_tbl_offer] FOREIGN KEY([offer_fk])
+REFERENCES [dbo].[tbl_offer] ([offer_id])
+GO
+ALTER TABLE [dbo].[tbl_offer_service] CHECK CONSTRAINT [FK_offer_service_tbl_offer]
+GO
+ALTER TABLE [dbo].[tbl_offer_service]  WITH CHECK ADD  CONSTRAINT [FK_offer_service_tbl_service] FOREIGN KEY([service_fk])
+REFERENCES [dbo].[tbl_service] ([service_id])
+GO
+ALTER TABLE [dbo].[tbl_offer_service] CHECK CONSTRAINT [FK_offer_service_tbl_service]
+GO
+ALTER TABLE [dbo].[tbl_order]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_tbl_car] FOREIGN KEY([car_fk])
+REFERENCES [dbo].[tbl_car] ([car_id])
+GO
+ALTER TABLE [dbo].[tbl_order] CHECK CONSTRAINT [FK_tbl_order_tbl_car]
+GO
+ALTER TABLE [dbo].[tbl_order]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_tbl_customer] FOREIGN KEY([customer_fk])
+REFERENCES [dbo].[tbl_customer] ([customer_id])
+GO
+ALTER TABLE [dbo].[tbl_order] CHECK CONSTRAINT [FK_tbl_order_tbl_customer]
+GO
+ALTER TABLE [dbo].[tbl_order]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_tbl_day_slot] FOREIGN KEY([DaySlotFk])
+REFERENCES [dbo].[tbl_days_slot] ([day_slot_id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[tbl_order] CHECK CONSTRAINT [FK_tbl_order_tbl_day_slot]
+GO
+ALTER TABLE [dbo].[tbl_order]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_tbl_offer] FOREIGN KEY([OfferFk])
+REFERENCES [dbo].[tbl_offer] ([offer_id])
+GO
+ALTER TABLE [dbo].[tbl_order] CHECK CONSTRAINT [FK_tbl_order_tbl_offer]
+GO
+ALTER TABLE [dbo].[tbl_order]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_tbl_provider] FOREIGN KEY([provider_fk])
+REFERENCES [dbo].[tbl_provider] ([provider_id])
+GO
+ALTER TABLE [dbo].[tbl_order] CHECK CONSTRAINT [FK_tbl_order_tbl_provider]
+GO
+ALTER TABLE [dbo].[tbl_order]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_tbl_provider_branch] FOREIGN KEY([branch_fk])
+REFERENCES [dbo].[tbl_provider_branch] ([branch_id])
+GO
+ALTER TABLE [dbo].[tbl_order] CHECK CONSTRAINT [FK_tbl_order_tbl_provider_branch]
+GO
+ALTER TABLE [dbo].[tbl_order]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_tbl_provider_employee] FOREIGN KEY([provider_employee_fk])
+REFERENCES [dbo].[tbl_provider_employee] ([employee_id])
+GO
+ALTER TABLE [dbo].[tbl_order] CHECK CONSTRAINT [FK_tbl_order_tbl_provider_employee]
+GO
+ALTER TABLE [dbo].[tbl_order]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_tbl_service] FOREIGN KEY([service_fk])
+REFERENCES [dbo].[tbl_service] ([service_id])
+GO
+ALTER TABLE [dbo].[tbl_order] CHECK CONSTRAINT [FK_tbl_order_tbl_service]
+GO
+ALTER TABLE [dbo].[tbl_order_payment]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_payment_tbl_order] FOREIGN KEY([order_fk])
+REFERENCES [dbo].[tbl_order] ([order_id])
+GO
+ALTER TABLE [dbo].[tbl_order_payment] CHECK CONSTRAINT [FK_tbl_order_payment_tbl_order]
+GO
+ALTER TABLE [dbo].[tbl_order_review]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_review_tbl_customer] FOREIGN KEY([customer_fk])
+REFERENCES [dbo].[tbl_customer] ([customer_id])
+GO
+ALTER TABLE [dbo].[tbl_order_review] CHECK CONSTRAINT [FK_tbl_order_review_tbl_customer]
+GO
+ALTER TABLE [dbo].[tbl_order_review]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_review_tbl_order] FOREIGN KEY([order_fk])
+REFERENCES [dbo].[tbl_order] ([order_id])
+GO
+ALTER TABLE [dbo].[tbl_order_review] CHECK CONSTRAINT [FK_tbl_order_review_tbl_order]
+GO
+ALTER TABLE [dbo].[tbl_order_review]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_review_tbl_provider] FOREIGN KEY([provider_fk])
+REFERENCES [dbo].[tbl_provider] ([provider_id])
+GO
+ALTER TABLE [dbo].[tbl_order_review] CHECK CONSTRAINT [FK_tbl_order_review_tbl_provider]
+GO
+ALTER TABLE [dbo].[tbl_order_status]  WITH CHECK ADD  CONSTRAINT [FK_tbl_order_status_tbl_order] FOREIGN KEY([order_fk])
+REFERENCES [dbo].[tbl_order] ([order_id])
+GO
+ALTER TABLE [dbo].[tbl_order_status] CHECK CONSTRAINT [FK_tbl_order_status_tbl_order]
+GO
+ALTER TABLE [dbo].[tbl_provider_branch]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_branch_tbl_provider] FOREIGN KEY([provider_fk])
+REFERENCES [dbo].[tbl_provider] ([provider_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_branch] CHECK CONSTRAINT [FK_tbl_provider_branch_tbl_provider]
+GO
+ALTER TABLE [dbo].[tbl_provider_branch]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_branch_tbl_setting_city] FOREIGN KEY([city_fk])
+REFERENCES [dbo].[tbl_setting] ([setting_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_branch] CHECK CONSTRAINT [FK_tbl_provider_branch_tbl_setting_city]
+GO
+ALTER TABLE [dbo].[tbl_provider_branch]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_branch_tbl_setting_country] FOREIGN KEY([country_fk])
+REFERENCES [dbo].[tbl_setting] ([setting_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_branch] CHECK CONSTRAINT [FK_tbl_provider_branch_tbl_setting_country]
+GO
+ALTER TABLE [dbo].[tbl_provider_branch_slot]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_branch_slot_tbl_days_slot] FOREIGN KEY([DaySlotFk])
+REFERENCES [dbo].[tbl_days_slot] ([day_slot_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_branch_slot] CHECK CONSTRAINT [FK_tbl_provider_branch_slot_tbl_days_slot]
+GO
+ALTER TABLE [dbo].[tbl_provider_branch_slot]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_branch_slot_tbl_provider_branch] FOREIGN KEY([BranchFk])
+REFERENCES [dbo].[tbl_provider_branch] ([branch_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_branch_slot] CHECK CONSTRAINT [FK_tbl_provider_branch_slot_tbl_provider_branch]
+GO
+ALTER TABLE [dbo].[tbl_provider_branch_slot]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_branch_slot_tbl_week_day] FOREIGN KEY([WeekDayFk])
+REFERENCES [dbo].[tbl_week_day] ([week_day_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_branch_slot] CHECK CONSTRAINT [FK_tbl_provider_branch_slot_tbl_week_day]
+GO
+ALTER TABLE [dbo].[tbl_provider_employee]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_employee_tbl_car] FOREIGN KEY([CarFk])
+REFERENCES [dbo].[tbl_car] ([car_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_employee] CHECK CONSTRAINT [FK_tbl_provider_employee_tbl_car]
+GO
+ALTER TABLE [dbo].[tbl_provider_employee]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_employee_tbl_provider] FOREIGN KEY([provider_fk])
+REFERENCES [dbo].[tbl_provider] ([provider_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_employee] CHECK CONSTRAINT [FK_tbl_provider_employee_tbl_provider]
+GO
+ALTER TABLE [dbo].[tbl_provider_employee]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_employee_tbl_setting] FOREIGN KEY([role_type])
+REFERENCES [dbo].[tbl_setting] ([setting_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_employee] CHECK CONSTRAINT [FK_tbl_provider_employee_tbl_setting]
+GO
+ALTER TABLE [dbo].[tbl_provider_service]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_service_tbl_policy] FOREIGN KEY([policy_fk])
+REFERENCES [dbo].[tbl_policy] ([policy_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_service] CHECK CONSTRAINT [FK_tbl_provider_service_tbl_policy]
+GO
+ALTER TABLE [dbo].[tbl_provider_service]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_service_tbl_provider] FOREIGN KEY([provider_fk])
+REFERENCES [dbo].[tbl_provider] ([provider_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_service] CHECK CONSTRAINT [FK_tbl_provider_service_tbl_provider]
+GO
+ALTER TABLE [dbo].[tbl_provider_service]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_service_tbl_service] FOREIGN KEY([service_fk])
+REFERENCES [dbo].[tbl_service] ([service_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_service] CHECK CONSTRAINT [FK_tbl_provider_service_tbl_service]
+GO
+ALTER TABLE [dbo].[tbl_provider_wallet]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_wallet_tbl_order] FOREIGN KEY([order_fk])
+REFERENCES [dbo].[tbl_order] ([order_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_wallet] CHECK CONSTRAINT [FK_tbl_provider_wallet_tbl_order]
+GO
+ALTER TABLE [dbo].[tbl_provider_wallet]  WITH CHECK ADD  CONSTRAINT [FK_tbl_provider_wallet_tbl_provider] FOREIGN KEY([provider_fk])
+REFERENCES [dbo].[tbl_provider] ([provider_id])
+GO
+ALTER TABLE [dbo].[tbl_provider_wallet] CHECK CONSTRAINT [FK_tbl_provider_wallet_tbl_provider]
+GO
+ALTER TABLE [dbo].[tbl_service]  WITH CHECK ADD  CONSTRAINT [FK_tbl_service_tbl_service_type] FOREIGN KEY([service_type_fk])
+REFERENCES [dbo].[tbl_service_type] ([service_type_id])
+GO
+ALTER TABLE [dbo].[tbl_service] CHECK CONSTRAINT [FK_tbl_service_tbl_service_type]
+GO
