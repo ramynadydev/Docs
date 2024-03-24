@@ -1,0 +1,1326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="yakeen new live" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" id="8a852802-1aa6-436d-bf40-5b7a775f1131" encryptionMode="Not encrypted" updated="3.0.0 2019-11-05T14:42:03Z" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="Yakeen4SaqarWSServiceSoapBinding" type="wsdl" bindingName="{http://yakeen4saqarws.yakeen.elm.com/}Yakeen4SaqarWSServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS?wsdl" id="ab41e192-7def-499b-959b-67c8e6ed1146" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.jbossws.WSToolsWsdl2JavaAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Unwrap" value="false"/>
+  <con:entry key="Mapping file" value=""/>
+  <con:entry key="Use cached WSDL" value="true"/>
+  <con:entry key="Output Directory" value=""/>
+  <con:entry key="EJB Link" value=""/>
+  <con:entry key="WSDL" value="https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS?wsdl"/>
+  <con:entry key="Namespace mapping" value="&lt;xml-fragment/>"/>
+  <con:entry key="Append" value="false"/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Servlet Link" value=""/>
+</xml-fragment>]]></con:setting><con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.oracle.OracleWsaGenProxyAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Destination Package" value=""/>
+  <con:entry key="Use cached WSDL" value="true"/>
+  <con:entry key="Java Args" value=""/>
+  <con:entry key="Output Directory" value="D:\xxx"/>
+  <con:entry key="WSDL" value="https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS?wsdl"/>
+  <con:entry key="Tool Args" value=""/>
+</xml-fragment>]]></con:setting></con:settings><con:definitionCache type="TEXT" rootPart="https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS?wsdl"><con:part><con:url>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="Yakeen4SaqarWSService" targetNamespace="http://yakeen4saqarws.yakeen.elm.com/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://yakeen4saqarws.yakeen.elm.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://yakeen4saqarws.yakeen.elm.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="CommonErrorObject">
+        <xs:sequence>
+          <xs:element name="Type" type="xs:string"/>
+          <xs:element name="ErrorCode" type="xs:int"/>
+          <xs:element name="ErrorMessage" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="carInfoBySequenceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element name="ownerID" type="xs:long"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element name="sequenceNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="carInfoBySequenceResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chassisNumber" type="xs:string"/>
+          <xs:element name="lastInsuranceStatus" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="licenseExpiryDate" type="xs:string"/>
+          <xs:element name="logId" type="xs:int"/>
+          <xs:element minOccurs="0" name="majorColor" type="xs:string"/>
+          <xs:element minOccurs="0" name="minorColor" type="xs:string"/>
+          <xs:element name="modelYear" type="xs:short"/>
+          <xs:element minOccurs="0" name="ownerName" type="xs:string"/>
+          <xs:element name="plateNumber" type="xs:short"/>
+          <xs:element minOccurs="0" name="plateText1" type="xs:string"/>
+          <xs:element minOccurs="0" name="plateText2" type="xs:string"/>
+          <xs:element minOccurs="0" name="plateText3" type="xs:string"/>
+          <xs:element name="plateTypeCode" type="xs:short"/>
+          <xs:element name="regCityLocationCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="vehicleBody" type="xs:string"/>
+          <xs:element name="vehicleBodyCode" type="xs:short"/>
+          <xs:element name="vehicleLoad" type="xs:int"/>
+          <xs:element name="vehicleMakerCode" type="xs:int"/>
+          <xs:element name="vehicleModelCode" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="carInfoByCustomForPlateRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="customCardNumber" type="xs:string"/>
+          <xs:element name="modelYearG" type="xs:short"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="carInfoByCustomForPlateResult">
+        <xs:sequence>
+          <xs:element name="logId" type="xs:int"/>
+          <xs:element name="plateNumber" type="xs:short"/>
+          <xs:element minOccurs="0" name="plateText1" type="xs:string"/>
+          <xs:element minOccurs="0" name="plateText2" type="xs:string"/>
+          <xs:element minOccurs="0" name="plateText3" type="xs:string"/>
+          <xs:element minOccurs="0" name="plateTypeDesc" type="xs:string"/>
+          <xs:element name="sequenceNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="companyAddressInfoByCrRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addressLanguage" type="xs:string"/>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element name="crNumber" type="xs:long"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="companyAddressInfoByCrResult">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="addressListList" nillable="true" type="tns:addressList14"/>
+          <xs:element name="logId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addressList14">
+        <xs:sequence>
+          <xs:element name="additionalNumber" type="xs:int"/>
+          <xs:element name="buildingNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="xs:string"/>
+          <xs:element name="isPrimaryAddress" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="locationCoordinates" type="xs:string"/>
+          <xs:element name="postCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="streetName" type="xs:string"/>
+          <xs:element name="unitNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="citizenAddressInfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addressLanguage" type="xs:string"/>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfBirth" type="xs:string"/>
+          <xs:element minOccurs="0" name="nin" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="citizenAddressInfoResult">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="addressListList" nillable="true" type="tns:addressList12"/>
+          <xs:element name="logId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addressList12">
+        <xs:sequence>
+          <xs:element name="additionalNumber" type="xs:int"/>
+          <xs:element name="buildingNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="xs:string"/>
+          <xs:element name="isPrimaryAddress" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="locationCoordinates" type="xs:string"/>
+          <xs:element name="postCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="streetName" type="xs:string"/>
+          <xs:element name="unitNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="citizenInfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfBirthH" type="xs:string"/>
+          <xs:element minOccurs="0" name="nin" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="citizenInfoResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateOfBirthH" type="xs:string"/>
+          <xs:element minOccurs="0" name="englishFirstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="englishLastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="englishSecondName" type="xs:string"/>
+          <xs:element minOccurs="0" name="englishThirdName" type="xs:string"/>
+          <xs:element minOccurs="0" name="familyName" type="xs:string"/>
+          <xs:element minOccurs="0" name="fatherName" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="gender" type="tns:gender"/>
+          <xs:element minOccurs="0" name="grandFatherName" type="xs:string"/>
+          <xs:element minOccurs="0" name="idExpiryDate" type="xs:string"/>
+          <xs:element name="logId" type="xs:int"/>
+          <xs:element minOccurs="0" name="occupationCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="socialStatusDesc" type="xs:string"/>
+          <xs:element minOccurs="0" name="subtribeName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alienInfoByIqamaRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="iqamaNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="sponsorID" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alienInfoByIqamaResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateOfBirthG" type="xs:string"/>
+          <xs:element minOccurs="0" name="englishFirstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="englishLastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="englishSecondName" type="xs:string"/>
+          <xs:element minOccurs="0" name="englishThirdName" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="gender" type="tns:gender"/>
+          <xs:element minOccurs="0" name="iqamaExpiryDateG" type="xs:string"/>
+          <xs:element minOccurs="0" name="iqamaIssuePlaceDesc" type="xs:string"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element name="logId" type="xs:int"/>
+          <xs:element minOccurs="0" name="nationalityDesc" type="xs:string"/>
+          <xs:element name="occupationCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="secondName" type="xs:string"/>
+          <xs:element minOccurs="0" name="socialStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="thirdName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alienInfoByVisaTwoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+          <xs:element minOccurs="0" name="visaExpDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="visaNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alienInfoByVisaTwoResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="birthgDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="gender" type="tns:gender"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element name="logId" type="xs:int"/>
+          <xs:element minOccurs="0" name="nationalityDesc" type="xs:string"/>
+          <xs:element minOccurs="0" name="secondName" type="xs:string"/>
+          <xs:element minOccurs="0" name="thirdName" type="xs:string"/>
+          <xs:element minOccurs="0" name="visaExpiryDateG" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alienInfoByBorderNumberRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="borderNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="sponsorID" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alienInfoByBorderNumberResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="birthDateG" type="xs:string"/>
+          <xs:element minOccurs="0" name="familyName" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="gender" type="tns:gender"/>
+          <xs:element minOccurs="0" name="grandFatherName" type="xs:string"/>
+          <xs:element name="logId" type="xs:int"/>
+          <xs:element minOccurs="0" name="nationalityDesc" type="xs:string"/>
+          <xs:element name="occupationCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="seconedName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alienAddressInfoByIqamaRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addressLanguage" type="xs:string"/>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfBirth" type="xs:string"/>
+          <xs:element minOccurs="0" name="iqamaNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alienAddressInfoByIqamaResult">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="addressListList" nillable="true" type="tns:addressList13"/>
+          <xs:element name="logId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addressList13">
+        <xs:sequence>
+          <xs:element name="additionalNumber" type="xs:int"/>
+          <xs:element name="buildingNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="xs:string"/>
+          <xs:element name="isPrimaryAddress" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="locationCoordinates" type="xs:string"/>
+          <xs:element name="postCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="streetName" type="xs:string"/>
+          <xs:element name="unitNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="depAlienInfoByIqAndBoarderNoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="borderNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="iqamaNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="depAlienInfoByIqAndBoarderNoResult">
+        <xs:sequence>
+          <xs:element name="logId" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="sponseredListList" nillable="true" type="tns:sponseredList11"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sponseredList11">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arabicName" type="xs:string"/>
+          <xs:element minOccurs="0" name="borderNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateOfBirthG" type="xs:string"/>
+          <xs:element minOccurs="0" name="englishName" type="xs:string"/>
+          <xs:element minOccurs="0" name="nationalityDesc" type="xs:string"/>
+          <xs:element minOccurs="0" name="sponserName" type="xs:string"/>
+          <xs:element minOccurs="0" name="sponsoredGender" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="depOfAlienInfoByIqamaRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="depIqama" type="xs:string"/>
+          <xs:element minOccurs="0" name="iqamaNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="depOfAlienInfoByIqamaResult">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="dependentsListList" nillable="true" type="tns:dependentsList4"/>
+          <xs:element name="logId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="dependentsList4">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="depDateBirthG" type="xs:string"/>
+          <xs:element minOccurs="0" name="depEnglishFirstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="depEnglishLastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="depEnglishSecondName" type="xs:string"/>
+          <xs:element minOccurs="0" name="depEnglishThirdName" type="xs:string"/>
+          <xs:element minOccurs="0" name="depFamilyName" type="xs:string"/>
+          <xs:element minOccurs="0" name="depFatherName" type="xs:string"/>
+          <xs:element minOccurs="0" name="depFirstName" type="xs:string"/>
+          <xs:element name="depGender" type="xs:short"/>
+          <xs:element minOccurs="0" name="depGndFatherName" type="xs:string"/>
+          <xs:element minOccurs="0" name="depIqamaExpiryDateG" type="xs:string"/>
+          <xs:element minOccurs="0" name="depIqamaNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="depIqamaPlace" type="xs:string"/>
+          <xs:element minOccurs="0" name="depLifeStatusDesc" type="xs:string"/>
+          <xs:element minOccurs="0" name="depNationalityDesc" type="xs:string"/>
+          <xs:element minOccurs="0" name="depOccupationDesc" type="xs:string"/>
+          <xs:element minOccurs="0" name="depRelationship" type="xs:string"/>
+          <xs:element minOccurs="0" name="depSocialStatusDesc" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="depOfCitizInfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element name="depNIN" type="xs:long"/>
+          <xs:element minOccurs="0" name="nin" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="depOfCitizInfoResult">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="citizenCurrentDependentInfoListList" nillable="true" type="tns:citizenCurrentDependentInfoList2"/>
+          <xs:element name="logId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="citizenCurrentDependentInfoList2">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateOfBirth" type="xs:string"/>
+          <xs:element name="depGender" type="xs:short"/>
+          <xs:element minOccurs="0" name="depId" type="xs:string"/>
+          <xs:element minOccurs="0" name="englishName" type="xs:string"/>
+          <xs:element minOccurs="0" name="familyName" type="xs:string"/>
+          <xs:element minOccurs="0" name="fatherName" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="grandName" type="xs:string"/>
+          <xs:element minOccurs="0" name="idExpiryDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="kinshipDesc" type="xs:string"/>
+          <xs:element minOccurs="0" name="subtribeName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="carInfoByCustomRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="customCardNumber" type="xs:string"/>
+          <xs:element name="modelYearG" type="xs:short"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="carInfoByCustomResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chassisNumber" type="xs:string"/>
+          <xs:element name="logId" type="xs:int"/>
+          <xs:element minOccurs="0" name="majorColor" type="xs:string"/>
+          <xs:element minOccurs="0" name="minorColor" type="xs:string"/>
+          <xs:element name="modelYear" type="xs:short"/>
+          <xs:element minOccurs="0" name="vehicleBodyDesc" type="xs:string"/>
+          <xs:element name="vehicleLoad" type="xs:int"/>
+          <xs:element name="vehicleMakerCode" type="xs:int"/>
+          <xs:element name="vehicleModelCode" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alienInfoByVisaRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chargeCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="referenceNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="sponsorID" type="xs:string"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+          <xs:element minOccurs="0" name="visaNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alienInfoByVisaResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="birthgDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="gender" type="tns:gender"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element name="logId" type="xs:int"/>
+          <xs:element minOccurs="0" name="nationalityDesc" type="xs:string"/>
+          <xs:element name="occupationCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="secondName" type="xs:string"/>
+          <xs:element minOccurs="0" name="sponsorId" type="xs:string"/>
+          <xs:element minOccurs="0" name="thirdName" type="xs:string"/>
+          <xs:element minOccurs="0" name="visaExpiryDateG" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="gender">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="M"/>
+          <xs:enumeration value="F"/>
+          <xs:enumeration value="U"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="Yakeen4SaqarWSFault" type="tns:Yakeen4SaqarWSFault"/>
+      <xs:complexType name="Yakeen4SaqarWSFault">
+        <xs:sequence>
+          <xs:element name="commonErrorObject" nillable="true" type="tns:CommonErrorObject"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCarInfoBySequence" type="tns:getCarInfoBySequence"/>
+      <xs:complexType name="getCarInfoBySequence">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CarInfoBySequenceRequest" type="tns:carInfoBySequenceRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCarInfoBySequenceResponse" type="tns:getCarInfoBySequenceResponse"/>
+      <xs:complexType name="getCarInfoBySequenceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CarInfoBySequenceResult" type="tns:carInfoBySequenceResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCarInfoByCustomForPlate" type="tns:getCarInfoByCustomForPlate"/>
+      <xs:complexType name="getCarInfoByCustomForPlate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CarInfoByCustomForPlateRequest" type="tns:carInfoByCustomForPlateRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCarInfoByCustomForPlateResponse" type="tns:getCarInfoByCustomForPlateResponse"/>
+      <xs:complexType name="getCarInfoByCustomForPlateResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CarInfoByCustomForPlateResult" type="tns:carInfoByCustomForPlateResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCompanyAddressInfoByCr" type="tns:getCompanyAddressInfoByCr"/>
+      <xs:complexType name="getCompanyAddressInfoByCr">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CompanyAddressInfoByCrRequest" type="tns:companyAddressInfoByCrRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCompanyAddressInfoByCrResponse" type="tns:getCompanyAddressInfoByCrResponse"/>
+      <xs:complexType name="getCompanyAddressInfoByCrResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CompanyAddressInfoByCrResult" type="tns:companyAddressInfoByCrResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCitizenAddressInfo" type="tns:getCitizenAddressInfo"/>
+      <xs:complexType name="getCitizenAddressInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CitizenAddressInfoRequest" type="tns:citizenAddressInfoRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCitizenAddressInfoResponse" type="tns:getCitizenAddressInfoResponse"/>
+      <xs:complexType name="getCitizenAddressInfoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CitizenAddressInfoResult" type="tns:citizenAddressInfoResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCitizenInfo" type="tns:getCitizenInfo"/>
+      <xs:complexType name="getCitizenInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CitizenInfoRequest" type="tns:citizenInfoRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCitizenInfoResponse" type="tns:getCitizenInfoResponse"/>
+      <xs:complexType name="getCitizenInfoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CitizenInfoResult" type="tns:citizenInfoResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAlienInfoByIqama" type="tns:getAlienInfoByIqama"/>
+      <xs:complexType name="getAlienInfoByIqama">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlienInfoByIqamaRequest" type="tns:alienInfoByIqamaRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAlienInfoByIqamaResponse" type="tns:getAlienInfoByIqamaResponse"/>
+      <xs:complexType name="getAlienInfoByIqamaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlienInfoByIqamaResult" type="tns:alienInfoByIqamaResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAlienInfoByVisaTwo" type="tns:getAlienInfoByVisaTwo"/>
+      <xs:complexType name="getAlienInfoByVisaTwo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlienInfoByVisaTwoRequest" type="tns:alienInfoByVisaTwoRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAlienInfoByVisaTwoResponse" type="tns:getAlienInfoByVisaTwoResponse"/>
+      <xs:complexType name="getAlienInfoByVisaTwoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlienInfoByVisaTwoResult" type="tns:alienInfoByVisaTwoResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAlienInfoByBorderNumber" type="tns:getAlienInfoByBorderNumber"/>
+      <xs:complexType name="getAlienInfoByBorderNumber">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlienInfoByBorderNumberRequest" type="tns:alienInfoByBorderNumberRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAlienInfoByBorderNumberResponse" type="tns:getAlienInfoByBorderNumberResponse"/>
+      <xs:complexType name="getAlienInfoByBorderNumberResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlienInfoByBorderNumberResult" type="tns:alienInfoByBorderNumberResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAlienAddressInfoByIqama" type="tns:getAlienAddressInfoByIqama"/>
+      <xs:complexType name="getAlienAddressInfoByIqama">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlienAddressInfoByIqamaRequest" type="tns:alienAddressInfoByIqamaRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAlienAddressInfoByIqamaResponse" type="tns:getAlienAddressInfoByIqamaResponse"/>
+      <xs:complexType name="getAlienAddressInfoByIqamaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlienAddressInfoByIqamaResult" type="tns:alienAddressInfoByIqamaResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getDepAlienInfoByIqAndBoarderNo" type="tns:getDepAlienInfoByIqAndBoarderNo"/>
+      <xs:complexType name="getDepAlienInfoByIqAndBoarderNo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DepAlienInfoByIqAndBoarderNoRequest" type="tns:depAlienInfoByIqAndBoarderNoRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getDepAlienInfoByIqAndBoarderNoResponse" type="tns:getDepAlienInfoByIqAndBoarderNoResponse"/>
+      <xs:complexType name="getDepAlienInfoByIqAndBoarderNoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DepAlienInfoByIqAndBoarderNoResult" type="tns:depAlienInfoByIqAndBoarderNoResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getDepOfAlienInfoByIqama" type="tns:getDepOfAlienInfoByIqama"/>
+      <xs:complexType name="getDepOfAlienInfoByIqama">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DepOfAlienInfoByIqamaRequest" type="tns:depOfAlienInfoByIqamaRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getDepOfAlienInfoByIqamaResponse" type="tns:getDepOfAlienInfoByIqamaResponse"/>
+      <xs:complexType name="getDepOfAlienInfoByIqamaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DepOfAlienInfoByIqamaResult" type="tns:depOfAlienInfoByIqamaResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getDepOfCitizInfo" type="tns:getDepOfCitizInfo"/>
+      <xs:complexType name="getDepOfCitizInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DepOfCitizInfoRequest" type="tns:depOfCitizInfoRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getDepOfCitizInfoResponse" type="tns:getDepOfCitizInfoResponse"/>
+      <xs:complexType name="getDepOfCitizInfoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DepOfCitizInfoResult" type="tns:depOfCitizInfoResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCarInfoByCustom" type="tns:getCarInfoByCustom"/>
+      <xs:complexType name="getCarInfoByCustom">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CarInfoByCustomRequest" type="tns:carInfoByCustomRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCarInfoByCustomResponse" type="tns:getCarInfoByCustomResponse"/>
+      <xs:complexType name="getCarInfoByCustomResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CarInfoByCustomResult" type="tns:carInfoByCustomResult"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAlienInfoByVisa" type="tns:getAlienInfoByVisa"/>
+      <xs:complexType name="getAlienInfoByVisa">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlienInfoByVisaRequest" type="tns:alienInfoByVisaRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAlienInfoByVisaResponse" type="tns:getAlienInfoByVisaResponse"/>
+      <xs:complexType name="getAlienInfoByVisaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AlienInfoByVisaResult" type="tns:alienInfoByVisaResult"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCitizenInfo">
+    <wsdl:part element="tns:getCitizenInfo" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCitizenInfoResponse">
+    <wsdl:part element="tns:getCitizenInfoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCarInfoByCustomForPlateResponse">
+    <wsdl:part element="tns:getCarInfoByCustomForPlateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlienAddressInfoByIqamaResponse">
+    <wsdl:part element="tns:getAlienAddressInfoByIqamaResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCarInfoByCustom">
+    <wsdl:part element="tns:getCarInfoByCustom" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlienInfoByIqamaResponse">
+    <wsdl:part element="tns:getAlienInfoByIqamaResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDepOfCitizInfoResponse">
+    <wsdl:part element="tns:getDepOfCitizInfoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCarInfoBySequence">
+    <wsdl:part element="tns:getCarInfoBySequence" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDepOfCitizInfo">
+    <wsdl:part element="tns:getDepOfCitizInfo" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCarInfoBySequenceResponse">
+    <wsdl:part element="tns:getCarInfoBySequenceResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlienInfoByVisaTwo">
+    <wsdl:part element="tns:getAlienInfoByVisaTwo" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlienInfoByIqama">
+    <wsdl:part element="tns:getAlienInfoByIqama" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCarInfoByCustomResponse">
+    <wsdl:part element="tns:getCarInfoByCustomResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCompanyAddressInfoByCrResponse">
+    <wsdl:part element="tns:getCompanyAddressInfoByCrResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlienInfoByBorderNumber">
+    <wsdl:part element="tns:getAlienInfoByBorderNumber" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDepAlienInfoByIqAndBoarderNoResponse">
+    <wsdl:part element="tns:getDepAlienInfoByIqAndBoarderNoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCompanyAddressInfoByCr">
+    <wsdl:part element="tns:getCompanyAddressInfoByCr" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlienInfoByVisaTwoResponse">
+    <wsdl:part element="tns:getAlienInfoByVisaTwoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCitizenAddressInfoResponse">
+    <wsdl:part element="tns:getCitizenAddressInfoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCarInfoByCustomForPlate">
+    <wsdl:part element="tns:getCarInfoByCustomForPlate" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Yakeen4SaqarWSFault">
+    <wsdl:part element="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlienInfoByVisa">
+    <wsdl:part element="tns:getAlienInfoByVisa" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCitizenAddressInfo">
+    <wsdl:part element="tns:getCitizenAddressInfo" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDepAlienInfoByIqAndBoarderNo">
+    <wsdl:part element="tns:getDepAlienInfoByIqAndBoarderNo" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlienInfoByBorderNumberResponse">
+    <wsdl:part element="tns:getAlienInfoByBorderNumberResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlienAddressInfoByIqama">
+    <wsdl:part element="tns:getAlienAddressInfoByIqama" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDepOfAlienInfoByIqama">
+    <wsdl:part element="tns:getDepOfAlienInfoByIqama" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAlienInfoByVisaResponse">
+    <wsdl:part element="tns:getAlienInfoByVisaResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDepOfAlienInfoByIqamaResponse">
+    <wsdl:part element="tns:getDepOfAlienInfoByIqamaResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Yakeen4SaqarWS">
+    <wsdl:operation name="getCarInfoBySequence">
+      <wsdl:input message="tns:getCarInfoBySequence" name="getCarInfoBySequence"></wsdl:input>
+      <wsdl:output message="tns:getCarInfoBySequenceResponse" name="getCarInfoBySequenceResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCarInfoByCustomForPlate">
+      <wsdl:input message="tns:getCarInfoByCustomForPlate" name="getCarInfoByCustomForPlate"></wsdl:input>
+      <wsdl:output message="tns:getCarInfoByCustomForPlateResponse" name="getCarInfoByCustomForPlateResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCompanyAddressInfoByCr">
+      <wsdl:input message="tns:getCompanyAddressInfoByCr" name="getCompanyAddressInfoByCr"></wsdl:input>
+      <wsdl:output message="tns:getCompanyAddressInfoByCrResponse" name="getCompanyAddressInfoByCrResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCitizenAddressInfo">
+      <wsdl:input message="tns:getCitizenAddressInfo" name="getCitizenAddressInfo"></wsdl:input>
+      <wsdl:output message="tns:getCitizenAddressInfoResponse" name="getCitizenAddressInfoResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCitizenInfo">
+      <wsdl:input message="tns:getCitizenInfo" name="getCitizenInfo"></wsdl:input>
+      <wsdl:output message="tns:getCitizenInfoResponse" name="getCitizenInfoResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAlienInfoByIqama">
+      <wsdl:input message="tns:getAlienInfoByIqama" name="getAlienInfoByIqama"></wsdl:input>
+      <wsdl:output message="tns:getAlienInfoByIqamaResponse" name="getAlienInfoByIqamaResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAlienInfoByVisaTwo">
+      <wsdl:input message="tns:getAlienInfoByVisaTwo" name="getAlienInfoByVisaTwo"></wsdl:input>
+      <wsdl:output message="tns:getAlienInfoByVisaTwoResponse" name="getAlienInfoByVisaTwoResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAlienInfoByBorderNumber">
+      <wsdl:input message="tns:getAlienInfoByBorderNumber" name="getAlienInfoByBorderNumber"></wsdl:input>
+      <wsdl:output message="tns:getAlienInfoByBorderNumberResponse" name="getAlienInfoByBorderNumberResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAlienAddressInfoByIqama">
+      <wsdl:input message="tns:getAlienAddressInfoByIqama" name="getAlienAddressInfoByIqama"></wsdl:input>
+      <wsdl:output message="tns:getAlienAddressInfoByIqamaResponse" name="getAlienAddressInfoByIqamaResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDepAlienInfoByIqAndBoarderNo">
+      <wsdl:input message="tns:getDepAlienInfoByIqAndBoarderNo" name="getDepAlienInfoByIqAndBoarderNo"></wsdl:input>
+      <wsdl:output message="tns:getDepAlienInfoByIqAndBoarderNoResponse" name="getDepAlienInfoByIqAndBoarderNoResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDepOfAlienInfoByIqama">
+      <wsdl:input message="tns:getDepOfAlienInfoByIqama" name="getDepOfAlienInfoByIqama"></wsdl:input>
+      <wsdl:output message="tns:getDepOfAlienInfoByIqamaResponse" name="getDepOfAlienInfoByIqamaResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDepOfCitizInfo">
+      <wsdl:input message="tns:getDepOfCitizInfo" name="getDepOfCitizInfo"></wsdl:input>
+      <wsdl:output message="tns:getDepOfCitizInfoResponse" name="getDepOfCitizInfoResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCarInfoByCustom">
+      <wsdl:input message="tns:getCarInfoByCustom" name="getCarInfoByCustom"></wsdl:input>
+      <wsdl:output message="tns:getCarInfoByCustomResponse" name="getCarInfoByCustomResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAlienInfoByVisa">
+      <wsdl:input message="tns:getAlienInfoByVisa" name="getAlienInfoByVisa"></wsdl:input>
+      <wsdl:output message="tns:getAlienInfoByVisaResponse" name="getAlienInfoByVisaResponse"></wsdl:output>
+      <wsdl:fault message="tns:Yakeen4SaqarWSFault" name="Yakeen4SaqarWSFault"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Yakeen4SaqarWSServiceSoapBinding" type="tns:Yakeen4SaqarWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCarInfoBySequence">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCarInfoBySequence">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCarInfoBySequenceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCarInfoByCustomForPlate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCarInfoByCustomForPlate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCarInfoByCustomForPlateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCitizenAddressInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCitizenAddressInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCitizenAddressInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCompanyAddressInfoByCr">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCompanyAddressInfoByCr">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCompanyAddressInfoByCrResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCitizenInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCitizenInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCitizenInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAlienInfoByIqama">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAlienInfoByIqama">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAlienInfoByIqamaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAlienInfoByVisaTwo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAlienInfoByVisaTwo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAlienInfoByVisaTwoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAlienAddressInfoByIqama">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAlienAddressInfoByIqama">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAlienAddressInfoByIqamaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAlienInfoByBorderNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAlienInfoByBorderNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAlienInfoByBorderNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDepAlienInfoByIqAndBoarderNo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDepAlienInfoByIqAndBoarderNo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDepAlienInfoByIqAndBoarderNoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDepOfAlienInfoByIqama">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDepOfAlienInfoByIqama">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDepOfAlienInfoByIqamaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCarInfoByCustom">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCarInfoByCustom">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCarInfoByCustomResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDepOfCitizInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDepOfCitizInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDepOfCitizInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAlienInfoByVisa">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAlienInfoByVisa">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAlienInfoByVisaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Yakeen4SaqarWSFault">
+        <soap:fault name="Yakeen4SaqarWSFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Yakeen4SaqarWSService">
+    <wsdl:port binding="tns:Yakeen4SaqarWSServiceSoapBinding" name="Yakeen4SaqarWSPort">
+      <soap:address location="https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="getAlienInfoByBorderNumber" bindingOperationName="getAlienInfoByBorderNumber" type="Request-Response" outputName="getAlienInfoByBorderNumberResponse" inputName="getAlienInfoByBorderNumber" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="b28bedd9-e0fe-47a1-ac58-1185cc08062e"><con:settings/><con:call name="Request 1" id="82258aff-1cab-471d-8f8e-0831a8dc7940"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getAlienInfoByBorderNumber>
+         <!--Optional:-->
+         <AlienInfoByBorderNumberRequest>
+            <!--Optional:-->
+            <borderNumber>3060311374</borderNumber>
+            <!--Optional:-->
+            <chargeCode>prod</chargeCode>
+            <!--Optional:-->
+            <password>Ss@q137</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <!--Optional:-->
+            <sponsorID>1044538427</sponsorID>
+            <!--Optional:-->
+            <userName>SaqarWS_USR_PROD</userName>
+         </AlienInfoByBorderNumberRequest>
+      </yak:getAlienInfoByBorderNumber>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getAlienInfoByBorderNumber"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getAlienInfoByIqama" bindingOperationName="getAlienInfoByIqama" type="Request-Response" outputName="getAlienInfoByIqamaResponse" inputName="getAlienInfoByIqama" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="75f0566f-ae78-43d4-a885-1c48882d1de7"><con:settings/><con:call id="f6d205c2-f3ef-483e-a8d3-ef71b86abe9f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getAlienInfoByIqama>
+         <!--Optional:-->
+         <AlienInfoByIqamaRequest>
+            <!--Optional:-->
+            <chargeCode>PROD</chargeCode>
+            <!--Optional:-->
+            <iqamaNumber>2038483166</iqamaNumber>
+            <!--Optional:-->
+            <password>Ss@q137</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <!--Optional:-->
+            <sponsorID>7009757704</sponsorID>
+            <!--Optional:-->
+            <userName>SaqarWS_USR_PROD</userName>
+         </AlienInfoByIqamaRequest>
+      </yak:getAlienInfoByIqama>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getAlienInfoByIqama"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getAlienInfoByVisa" bindingOperationName="getAlienInfoByVisa" type="Request-Response" outputName="getAlienInfoByVisaResponse" inputName="getAlienInfoByVisa" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="0b6c26a6-e5b1-4619-816f-242b9eddc9ea"><con:settings/><con:call name="Request 1" id="eabd2747-187f-483b-89b7-cdc0d1e7d833"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getAlienInfoByVisa>
+         <!--Optional:-->
+         <AlienInfoByVisaRequest>
+            <!--Optional:-->
+            <chargeCode>?</chargeCode>
+            <!--Optional:-->
+            <password>?</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <!--Optional:-->
+            <sponsorID>?</sponsorID>
+            <!--Optional:-->
+            <userName>?</userName>
+            <!--Optional:-->
+            <visaNumber>?</visaNumber>
+         </AlienInfoByVisaRequest>
+      </yak:getAlienInfoByVisa>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getAlienInfoByVisa"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getAlienInfoByVisaTwo" bindingOperationName="getAlienInfoByVisaTwo" type="Request-Response" outputName="getAlienInfoByVisaTwoResponse" inputName="getAlienInfoByVisaTwo" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="8f4a5a5f-bbd0-4b8b-8d03-dc7f8eebed0b"><con:settings/><con:call name="Request 1" id="6756175c-8551-4f1c-acbc-cdbc90a12630"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getAlienInfoByVisaTwo>
+         <!--Optional:-->
+         <AlienInfoByVisaTwoRequest>
+            <!--Optional:-->
+            <chargeCode>?</chargeCode>
+            <!--Optional:-->
+            <password>?</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <!--Optional:-->
+            <userName>?</userName>
+            <!--Optional:-->
+            <visaExpDate>?</visaExpDate>
+            <!--Optional:-->
+            <visaNumber>?</visaNumber>
+         </AlienInfoByVisaTwoRequest>
+      </yak:getAlienInfoByVisaTwo>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getAlienInfoByVisaTwo"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getCarInfoByCustom" bindingOperationName="getCarInfoByCustom" type="Request-Response" outputName="getCarInfoByCustomResponse" inputName="getCarInfoByCustom" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="a344a207-00c8-4cd6-a555-073d4d08b1f5"><con:settings/><con:call name="Request 1" id="3b35f8a8-afa7-4ea3-bf81-52ab2e46928f"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getCarInfoByCustom>
+         <!--Optional:-->
+         <CarInfoByCustomRequest>
+            <!--Optional:-->
+            <chargeCode>PROD</chargeCode>
+            <!--Optional:-->
+            <customCardNumber>1020336008</customCardNumber>
+            <modelYearG>2020</modelYearG>
+            <!--Optional:-->
+            <password>Ss@q137</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <!--Optional:-->
+            <userName>SaqarWS_USR_PROD</userName>
+         </CarInfoByCustomRequest>
+      </yak:getCarInfoByCustom>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCarInfoByCustom"/><con:wsrmConfig version="1.2"/></con:call><con:call id="cb814c2f-1bb7-4d81-9114-d9c01c00b0ee" name="Backup of [Request 1]"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getCarInfoByCustom>
+         <!--Optional:-->
+         <CarInfoByCustomRequest>
+            <!--Optional:-->
+            <chargeCode>?</chargeCode>
+            <!--Optional:-->
+            <customCardNumber>?</customCardNumber>
+            <modelYearG>?</modelYearG>
+            <!--Optional:-->
+            <password>?</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <!--Optional:-->
+            <userName>?</userName>
+         </CarInfoByCustomRequest>
+      </yak:getCarInfoByCustom>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCarInfoByCustom"/><con:wsrmConfig version="1.2"/></con:call><con:call id="46d78f82-3605-447a-962e-daa5edc98eec" name="Backup of [Backup of [Request 1]]"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getCarInfoByCustom>
+         <!--Optional:-->
+         <CarInfoByCustomRequest>
+            <!--Optional:-->
+            <chargeCode>?</chargeCode>
+            <!--Optional:-->
+            <customCardNumber>?</customCardNumber>
+            <modelYearG>?</modelYearG>
+            <!--Optional:-->
+            <password>?</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <!--Optional:-->
+            <userName>?</userName>
+         </CarInfoByCustomRequest>
+      </yak:getCarInfoByCustom>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCarInfoByCustom"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getCarInfoByCustomForPlate" bindingOperationName="getCarInfoByCustomForPlate" type="Request-Response" outputName="getCarInfoByCustomForPlateResponse" inputName="getCarInfoByCustomForPlate" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="0047dbf0-d96b-4ae3-b441-80eecf6a692a"><con:settings/><con:call name="Request 1" id="de5742cc-abac-4cb3-9f59-37f00c4509a9"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getCarInfoByCustomForPlate>
+         <!--Optional:-->
+         <CarInfoByCustomForPlateRequest>
+            <!--Optional:-->
+            <chargeCode>?</chargeCode>
+            <!--Optional:-->
+            <customCardNumber>?</customCardNumber>
+            <modelYearG>?</modelYearG>
+            <!--Optional:-->
+            <password>?</password>
+            <!--Optional:-->
+            <userName>?</userName>
+         </CarInfoByCustomForPlateRequest>
+      </yak:getCarInfoByCustomForPlate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCarInfoByCustomForPlate"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getCarInfoBySequence" bindingOperationName="getCarInfoBySequence" type="Request-Response" outputName="getCarInfoBySequenceResponse" inputName="getCarInfoBySequence" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="e8427ec0-090f-4c5d-afa1-0f5b10135ce8"><con:settings/><con:call id="4bf73772-2708-4252-a3ad-3398842daff4" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getCarInfoBySequence>
+         <!--Optional:-->
+         <CarInfoBySequenceRequest>
+            <!--Optional:-->
+            <chargeCode>PROD</chargeCode>
+            <ownerID>1004215396</ownerID>
+            <!--Optional:-->
+            <password>Ss@q137</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <sequenceNumber>6941610</sequenceNumber>
+            <!--Optional:-->
+            <userName>SaqarWS_USR_PROD</userName>
+         </CarInfoBySequenceRequest>
+      </yak:getCarInfoBySequence>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCarInfoBySequence"/><con:wsrmConfig version="1.2"/></con:call><con:call id="a2214164-c97f-4450-b36d-e7038fb18e95" name="Backup of [Request 1]"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getCarInfoBySequence>
+         <!--Optional:-->
+         <CarInfoBySequenceRequest>
+            <!--Optional:-->
+            <chargeCode>PROD</chargeCode>
+            <ownerID>?</ownerID>
+            <!--Optional:-->
+            <password>Ss@q137</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <sequenceNumber>920193800</sequenceNumber>
+            <!--Optional:-->
+            <userName>SaqarWS_USR_PROD</userName>
+         </CarInfoBySequenceRequest>
+      </yak:getCarInfoBySequence>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCarInfoBySequence"/></con:call><con:call id="7c3debb2-8e09-4358-8e0b-355c4e747dfb" name="Backup of [Backup of [Request 1]]"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getCarInfoBySequence>
+         <!--Optional:-->
+         <CarInfoBySequenceRequest>
+            <!--Optional:-->
+            <chargeCode>PROD</chargeCode>
+            <ownerID>?</ownerID>
+            <!--Optional:-->
+            <password>Ss@q137</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <sequenceNumber>920193800</sequenceNumber>
+            <!--Optional:-->
+            <userName>SaqarWS_USR_PROD</userName>
+         </CarInfoBySequenceRequest>
+      </yak:getCarInfoBySequence>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCarInfoBySequence"/></con:call><con:call id="8bb0aee2-fcf6-44be-8e07-bca0a5389993" name="Request 4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getCarInfoBySequence>
+         <!--Optional:-->
+         <CarInfoBySequenceRequest>
+            <!--Optional:-->
+            <chargeCode>PROD</chargeCode>
+            <ownerID>1026919140</ownerID>
+            <!--Optional:-->
+            <password>Ss@q137</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <sequenceNumber>760539100</sequenceNumber>
+            <!--Optional:-->
+            <userName>SaqarWS_USR_PROD</userName>
+         </CarInfoBySequenceRequest>
+      </yak:getCarInfoBySequence>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCarInfoBySequence"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getCitizenInfo" bindingOperationName="getCitizenInfo" type="Request-Response" outputName="getCitizenInfoResponse" inputName="getCitizenInfo" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="0cfeeab8-0784-43a8-a6c8-ef4dcfff8894"><con:settings/><con:call name="Request 1" id="bd92b3a1-d00a-4d9f-a26a-3d05636bedae"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getCitizenInfo>
+         <!--Optional:-->
+         <CitizenInfoRequest>
+            <!--Optional:-->
+            <chargeCode>PROD</chargeCode>
+            <!--Optional:-->
+            <dateOfBirthH>24-10-1398</dateOfBirthH>
+            <!--Optional:-->
+            <nin>1013840473</nin>
+            <!--Optional:-->
+            <password>Ss@q137</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <!--Optional:-->
+            <userName>SaqarWS_USR_PROD</userName>
+         </CitizenInfoRequest>
+      </yak:getCitizenInfo>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCitizenInfo"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getDepAlienInfoByIqAndBoarderNo" bindingOperationName="getDepAlienInfoByIqAndBoarderNo" type="Request-Response" outputName="getDepAlienInfoByIqAndBoarderNoResponse" inputName="getDepAlienInfoByIqAndBoarderNo" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="8aa59647-737b-4a21-9ccd-8e1360b3fcd3"><con:settings/><con:call name="Request 1" id="8d510ed8-f925-42c3-a8bb-300305204e5f"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getDepAlienInfoByIqAndBoarderNo>
+         <!--Optional:-->
+         <DepAlienInfoByIqAndBoarderNoRequest>
+            <!--Optional:-->
+            <borderNumber>4136901826</borderNumber>
+            <!--Optional:-->
+            <chargeCode>PROD</chargeCode>
+            <!--Optional:-->
+            <iqamaNumber>2188528398</iqamaNumber>
+            <!--Optional:-->
+            <password>Ss@q137</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <!--Optional:-->
+            <userName>SaqarWS_USR_PROD</userName>
+         </DepAlienInfoByIqAndBoarderNoRequest>
+      </yak:getDepAlienInfoByIqAndBoarderNo>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getDepAlienInfoByIqAndBoarderNo"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getDepOfAlienInfoByIqama" bindingOperationName="getDepOfAlienInfoByIqama" type="Request-Response" outputName="getDepOfAlienInfoByIqamaResponse" inputName="getDepOfAlienInfoByIqama" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="b6e13f66-6da5-44f8-a51c-b13bffb65441"><con:settings/><con:call name="Request 1" id="44fbd20c-c639-46ac-ac56-c1b815424285"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <yak:getDepOfAlienInfoByIqama>\r
+         <!--Optional:-->\r
+         <DepOfAlienInfoByIqamaRequest>\r
+            <!--Optional:-->\r
+            <chargeCode>PROD</chargeCode>\r
+            <!--Optional:-->\r
+            <depIqama>2216797650</depIqama>\r
+            <!--Optional:-->\r
+            <iqamaNumber>2163610583</iqamaNumber>\r
+            <!--Optional:-->\r
+            <password>Ss@q137</password>\r
+            <!--Optional:-->\r
+            <referenceNumber>?</referenceNumber>\r
+            <!--Optional:-->\r
+            <userName>SaqarWS_USR_PROD</userName>\r
+         </DepOfAlienInfoByIqamaRequest>\r
+      </yak:getDepOfAlienInfoByIqama>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getDepOfAlienInfoByIqama"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getDepOfCitizInfo" bindingOperationName="getDepOfCitizInfo" type="Request-Response" outputName="getDepOfCitizInfoResponse" inputName="getDepOfCitizInfo" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="8104e7d1-27fa-4ce4-9ab7-98bb0ecec1df"><con:settings/><con:call name="Request 1" id="01b5d666-dae4-4b5f-85f3-46ff9221e9e7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <yak:getDepOfCitizInfo>
+         <!--Optional:-->
+         <DepOfCitizInfoRequest>
+            <!--Optional:-->
+            <chargeCode>PROD</chargeCode>
+            <depNIN>1128150156</depNIN>
+            <!--Optional:-->
+            <nin>1013875396</nin>
+            <!--Optional:-->
+            <password>Ss@q137</password>
+            <!--Optional:-->
+            <referenceNumber>?</referenceNumber>
+            <!--Optional:-->
+            <userName>SaqarWS_USR_PROD</userName>
+         </DepOfCitizInfoRequest>
+      </yak:getDepOfCitizInfo>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getDepOfCitizInfo"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8fbdfdfb-59c4-4d77-8701-56cb2200b16d" isOneWay="false" action="" name="getCitizenAddressInfo" bindingOperationName="getCitizenAddressInfo" type="Request-Response" outputName="getCitizenAddressInfoResponse" inputName="getCitizenAddressInfo" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8da28342-512c-48fc-ab87-8a4279d01249" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <yak:getCitizenAddressInfo>\r
+         <!--Optional:-->\r
+         <CitizenAddressInfoRequest>\r
+            <!--Optional:-->\r
+            <addressLanguage>a</addressLanguage>\r
+            <!--Optional:-->\r
+            <chargeCode>prod</chargeCode>\r
+            <!--Optional:-->\r
+            <dateOfBirth>02/07/1394</dateOfBirth>\r
+            <!--Optional:-->\r
+            <nin>1019618931</nin>\r
+            <!--Optional:-->\r
+            <password>Ss@q137</password>\r
+            <!--Optional:-->\r
+            <referenceNumber>?</referenceNumber>\r
+            <!--Optional:-->\r
+            <userName>SaqarWS_USR_PROD</userName>\r
+         </CitizenAddressInfoRequest>\r
+      </yak:getCitizenAddressInfo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCitizenAddressInfo"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a9dbb042-86ef-4382-9188-9ad54d2ab1cb" isOneWay="false" action="" name="getCompanyAddressInfoByCr" bindingOperationName="getCompanyAddressInfoByCr" type="Request-Response" outputName="getCompanyAddressInfoByCrResponse" inputName="getCompanyAddressInfoByCr" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e7f01aed-4d3f-489e-8bde-1399b8818af3" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <yak:getCompanyAddressInfoByCr>\r
+         <!--Optional:-->\r
+         <CompanyAddressInfoByCrRequest>\r
+            <!--Optional:-->\r
+            <addressLanguage>e</addressLanguage>\r
+            <!--Optional:-->\r
+            <chargeCode>PROD</chargeCode>\r
+            <crNumber>4030292631</crNumber>\r
+            <!--Optional:-->\r
+            <password>Ss@q137</password>\r
+            <!--Optional:-->\r
+            <referenceNumber>?</referenceNumber>\r
+            <!--Optional:-->\r
+            <userName>SaqarWS_USR_PROD</userName>\r
+         </CompanyAddressInfoByCrRequest>\r
+      </yak:getCompanyAddressInfoByCr>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getCompanyAddressInfoByCr"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d385a33a-0015-4270-8f79-c078da310beb" isOneWay="false" action="" name="getAlienAddressInfoByIqama" bindingOperationName="getAlienAddressInfoByIqama" type="Request-Response" outputName="getAlienAddressInfoByIqamaResponse" inputName="getAlienAddressInfoByIqama" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ccbdffba-d43f-4dee-9a98-1a32c06d37b1" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://yakeen.eserve.com.sa/Yakeen4SaqarWS/Yakeen4SaqarWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:yak="http://yakeen4saqarws.yakeen.elm.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <yak:getAlienAddressInfoByIqama>\r
+         <!--Optional:-->\r
+         <AlienAddressInfoByIqamaRequest>\r
+            <!--Optional:-->\r
+            <addressLanguage>e</addressLanguage>\r
+            <!--Optional:-->\r
+            <chargeCode>PROD</chargeCode>\r
+            <!--Optional:-->\r
+            <dateOfBirth>02-03-1988</dateOfBirth>\r
+            <!--Optional:-->\r
+            <iqamaNumber>2339087740</iqamaNumber>\r
+            <!--Optional:-->\r
+            <password>Ss@q137</password>\r
+            <!--Optional:-->\r
+            <referenceNumber>?</referenceNumber>\r
+            <!--Optional:-->\r
+            <userName>SaqarWS_USR_PROD</userName>\r
+         </AlienAddressInfoByIqamaRequest>\r
+      </yak:getAlienAddressInfoByIqama>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://yakeen4saqarws.yakeen.elm.com/Yakeen4SaqarWS/getAlienAddressInfoByIqama"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:jmsConnectionContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:reporting><con:xmlTemplates/><con:parameters/></con:reporting><con:sensitiveInformation/><con:authRepository/><con:tags/></con:soapui-project>
